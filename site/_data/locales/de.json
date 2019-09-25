@@ -1,0 +1,16 @@
+{
+  "locale": "de",
+  "myProject": "Mein Projekt",
+  "helloWorld": "Hallo Welt",
+  "notFound": "Nicht gefunden",
+  "goTo": "Gehe zu",
+  "backTo": "Zurück zu",
+  "homepage": "Startseite",
+  "myBlog": "Mein Blog",
+  "blogPost1Title": "Typisch deutsch",
+  "created": "Veröffentlicht",
+  "tag": "Stichwort",
+  "tags": "Stichworte",
+  "learning": "Lernen",
+  "living": "Leben"
+}

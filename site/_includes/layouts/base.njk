@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{'locale' | i18n}}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ (renderData and renderData.title) or (title | i18n) }}</title>
+    <meta name="Description" content="{{ (renderData and renderData.description) or (description | i18n) }}">
+    <link rel="stylesheet" href="../site/_assets/base.scss">
+  </head>
+  <body{% if layoutClass %} class="{{ layoutClass }}"{% endif %}>
+    {{ content | safe }}
+    <script src="../site/_assets/base.js"></script>
+  </body>
+</html>

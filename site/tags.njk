@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - blog
+renderData:
+  title: "{{ 'tag' | i18n }} {{ tag | i18n }}"
+  description: "{{ 'tag' | i18n }} {{ tag | i18n }}"
+permalink: "{{ 'tag' | i18n | slug }}-{{ tag | i18n | slug | link }}"
+---
+<h1>{{ 'tag' | i18n }} “{{ tag | i18n }}”</h1>
+
+<ul>
+{% set taglist = collections[ tag ] %}
+{% for blogPost in taglist | reverse %}
+  {% for tag in blogPost.data.tags %}
+    {% if tag === 'blog' %}
+    <li>
+      <a href="{{ blogPost.url }}">
+        <span>{{ blogPost.data.title | i18n }}</span>
+        - 
+        <time datetime="{{ blogPost.data.date | dateIso }}">{{ blogPost.data.date | datePretty }}</time>
+      </a>
+    </li>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</ul>

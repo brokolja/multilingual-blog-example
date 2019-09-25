@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: myBlog
+description: myBlog
+permalink: "{{ 'myBlog' | i18n | slug | link }}"
+---
+
+<h1>{{ "myBlog" | i18n }}</h1>
+
+<ul>
+{%- for blogPost in collections.all | reverse -%}
+  {% for tag in blogPost.data.tags %}
+    {% if tag==='blog' %}
+    <li>
+      <a href="{{ blogPost.url }}">
+        <span>{{ blogPost.data.title | i18n }}</span>
+        - 
+        <time datetime="{{ blogPost.data.date | dateIso }}">{{ blogPost.data.date | datePretty }}</time>
+      </a>
+    </li>
+    {% endif %}
+  {% endfor %}
+{%- endfor -%}
+</ul>
+
+<p>{{'backTo' | i18n}}: <a href="{{ '/' | slug | link }}">{{'homepage' | i18n}}</a></p>

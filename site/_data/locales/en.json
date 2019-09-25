@@ -1,0 +1,17 @@
+{
+	"locale": "en",
+	"myProject": "My Project",
+	"helloWorld": "Hello World",
+	"notFound": "Not found",
+	"goTo": "Go to",
+	"backTo": "Back to",
+	"homepage": "Home",
+	"myBlog": "My Blog",
+	"blogPost1Title": "Typical english",
+	"created": "Published",
+	"tag": "Tag",
+	"tags": "Tags",
+	"learning": "Learning",
+	"living": "Living",
+	"undefined": "undefined"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run clean && run-p --race dev:eleventy dev:parcel",
+    "dev:https": "npm run clean && run-p --race dev:eleventy dev:parcel:https",
+    "dev:eleventy": "eleventy --input=./site --output=./build_eleventy --watch",
+    "dev:parcel": "sleep 3 ; parcel ./build_eleventy/* --out-dir ./build_parcel",
+    "dev:parcel:https": "sleep 3 ; parcel ./build_eleventy/* --out-dir ./build_parcel --https",
+    "production": "npm run clean:cache && npm run clean:dist &&npm run production:eleventy && npm run production:parcel && npm run clean:cache",
+    "production:eleventy": "NODE_ENV=production eleventy --input=./site --output=./build_eleventy",
+    "production:parcel": "NODE_ENV=production parcel build ./build_eleventy/* --out-dir ./dist --no-source-maps",
+    "production:i18n": "ELEVENTY_LOCALES=(en de) \n for locale in ${ELEVENTY_LOCALES[@]} \n do \n rm -rf ./dist-i18n/${locale} ; ELEVENTY_LOCALES=${ELEVENTY_LOCALES[@]} ELEVENTY_LOCALE=${locale} npm run production && mkdir -p dist-i18n/${locale} && cp -R dist/ dist-i18n/${locale} && npm run clean:dist\n done && npm run clean:cache && mkdir -p dist/ && cp -R dist-i18n/ dist && npm run clean:dist-i18n",
+    "serve": "serve ./dist/",
+    "clean": "npm run clean:cache ; npm run clean:dist ; npm run clean:dist-i18n",
+    "clean:dist": "rm -rf ./dist ",
+    "clean:dist-i18n": "rm -rf ./dist-i18n",
+    "clean:cache": "rm -rf ./.cache ./build_parcel ./build_eleventy"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0",
+    "i18n": "^0.8.3",
+    "moment": "^2.24.0",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.22.12",
+    "serve": "^11.1.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}

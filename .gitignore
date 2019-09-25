@@ -1,0 +1,8 @@
+.DS_Store
+.cache/
+build_parcel/
+build_eleventy/
+dist/
+dist-i18n/
+node_modules/
+package-lock.json

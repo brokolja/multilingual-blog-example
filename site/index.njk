@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+title: helloWorld
+description: helloWorld
+---
+
+<h1>{{ 'helloWorld' | i18n}}</h1>
+
+<p>{{'goTo' | i18n}}: <a href="{{ 'myBlog' | i18n | slug | link }}">{{'myBlog' | i18n}}</a></p>

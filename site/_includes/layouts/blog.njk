@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+
+{{ content | safe }}
+
+<p>
+{{ 'created' | i18n }}: <time datetime="{{ date | dateIso }}">{{ date | datePretty }}</time>
+</p>
+
+<p>
+{{ 'tags' | i18n }}: 
+{% for tag in tags %}
+{% if (tag !== 'all') and (tag !== 'blog') %}
+<a href="{{ 'tag' | i18n | slug}}-{{ tag | i18n | slug | link }}">{{ tag | i18n }}</a>{% if not loop.last %}, {% endif %}
+{% endif %}
+{% endfor %}
+</p>
+
+<p>{{'backTo' | i18n}}: <a href="{{ 'myBlog' | i18n | slug | link }}">{{'myBlog' | i18n}}</a></p>
